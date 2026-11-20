@@ -1,7 +1,7 @@
 'use client';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { BookOpen, Scale, FileCheck2, MapPinned, Calculator, Bell, Search, ShieldCheck, Sun, Moon, Languages, ArrowRight, Landmark } from 'lucide-react';
+import { BookOpen, Scale, FileCheck2, MapPinned, Calculator, Bell, Search, ShieldCheck, Sun, Moon, Languages, ArrowRight, Landmark, ClipboardList } from 'lucide-react';
 
 const bn = [
  {title:'আইন ও বিধিমালা',desc:'মূল আইন, বিধি, সংশোধনী ও সরকারি গেজেট',icon:BookOpen,href:'/laws'},
@@ -10,6 +10,7 @@ const bn = [
  {title:'খতিয়ান ও জরিপ',desc:'জরিপ, রেকর্ড, দাগ ও মৌজা-সংক্রান্ত তথ্য',icon:MapPinned,href:'/guides'},
  {title:'ফি ও ভূমি কর',desc:'ভূমি উন্নয়ন কর ও প্রযোজ্য ফি সম্পর্কে জানুন',icon:Calculator,href:'/guides'},
  {title:'আইন পরিবর্তনের খবর',desc:'নতুন আইন, গেজেট ও সংশোধনীর পর্যবেক্ষণ',icon:Bell,href:'/updates'},
+ {title:'গবেষণা ও অডিট আর্কাইভ',desc:'আগের ২২টি ব্যাচ, অডিট রিপোর্ট ও Master Ledger',icon:ClipboardList,href:'/research'},
 ];
 const en = [
  {title:'Laws & Rules',desc:'Acts, rules, amendments and official gazettes',icon:BookOpen,href:'/laws'},
@@ -18,6 +19,7 @@ const en = [
  {title:'Records & Surveys',desc:'Survey records, plots and mouza information',icon:MapPinned,href:'/guides'},
  {title:'Fees & Land Tax',desc:'Land development tax and applicable fees',icon:Calculator,href:'/guides'},
  {title:'Legal Updates',desc:'Monitor new laws, gazettes and amendments',icon:Bell,href:'/updates'},
+ {title:'Research & Audit Archive',desc:'Recovered batch reports, audit history and master ledger',icon:ClipboardList,href:'/research'},
 ];
 export default function Landing(){
  const [english,setEnglish]=useState(false); const [dark,setDark]=useState(false); const [query,setQuery]=useState('');
@@ -25,7 +27,7 @@ export default function Landing(){
  return <main className={dark?'min-h-screen bg-slate-950 text-slate-100':'min-h-screen bg-[#f7f8f4] text-slate-800'}>
  <header className="relative overflow-hidden bg-land-950 text-white"><div className="absolute -right-28 -top-32 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl"/><div className="relative mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-8">
  <Link href="/" className="flex items-center gap-3"><span className="grid h-12 w-12 place-items-center rounded-2xl border border-gold/60 bg-white/5 text-gold"><Landmark size={27}/></span><span><b className="block text-xl">ভূমি জ্ঞান</b><small className="tracking-[.18em] text-emerald-100">LAND KNOWLEDGE BD</small></span></Link>
- <nav className="hidden items-center gap-7 text-sm text-emerald-50 md:flex"><Link href="/laws">{english?'Law Library':'আইনভান্ডার'}</Link><Link href="/cases">{english?'Judgments':'আদালতের রায়'}</Link><Link href="/updates">{english?'Updates':'আপডেট'}</Link></nav>
+ <nav className="hidden items-center gap-7 text-sm text-emerald-50 md:flex"><Link href="/laws">{english?'Law Library':'আইনভান্ডার'}</Link><Link href="/cases">{english?'Judgments':'আদালতের রায়'}</Link><Link href="/updates">{english?'Updates':'আপডেট'}</Link><Link href="/research">{english?'Research Archive':'গবেষণা ও অডিট'}</Link></nav>
  <div className="flex gap-2"><button onClick={()=>setEnglish(!english)} aria-label="Change language" className="rounded-xl border border-white/20 p-2"><Languages size={18}/></button><button onClick={()=>setDark(!dark)} aria-label="Toggle theme" className="rounded-xl border border-white/20 p-2">{dark?<Sun size={18}/>:<Moon size={18}/>}</button></div></div>
  <section className="relative mx-auto max-w-7xl px-5 pb-16 pt-10 md:px-8 md:pb-24 md:pt-16"><div className="max-w-3xl"><div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-300/25 bg-white/5 px-4 py-2 text-xs font-medium text-emerald-100"><ShieldCheck size={16}/>{english?'Official-source-first legal knowledge platform':'সরকারি মূল উৎসভিত্তিক ভূমি আইন জ্ঞানভান্ডার'}</div>
  <h1 className="text-4xl font-bold leading-[1.2] tracking-tight md:text-6xl">{english?<>Know the law.<br/><span className="text-gold">Understand your land rights.</span></>:<>জমি সম্পর্কে জানুন,<br/><span className="text-gold">অধিকার বুঝুন।</span></>}</h1><p className="mt-6 max-w-2xl text-base leading-8 text-emerald-50/90 md:text-lg">{english?'Explore Bangladesh land laws, records, deeds and judicial decisions — with source links and transparent verification status.':'বাংলাদেশের ভূমি আইন, দলিল, রেকর্ড ও বিচারিক সিদ্ধান্ত খুঁজুন এক জায়গায়—মূল সরকারি উৎস ও যাচাইয়ের অবস্থা সঙ্গে নিয়ে।'}</p>
