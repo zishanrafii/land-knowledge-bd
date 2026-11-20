@@ -1,7 +1,7 @@
 'use client';
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import { BookOpen, Scale, FileCheck2, MapPinned, Calculator, Bell, Search, ShieldCheck, Sun, Moon, Languages, ArrowRight, Landmark } from 'lucide-react';
+import { BookOpen, Scale, FileCheck2, MapPinned, Calculator, Bell, Search, ShieldCheck, Sun, Moon, Languages, ArrowRight, Landmark, ClipboardList } from 'lucide-react';
 
 const bn = [
  {title:'আইন ও বিধিমালা',desc:'মূল আইন, বিধি, সংশোধনী ও সরকারি গেজেট',icon:BookOpen,href:'/laws'},
@@ -10,6 +10,7 @@ const bn = [
  {title:'খতিয়ান ও জরিপ',desc:'জরিপ, রেকর্ড, দাগ ও মৌজা-সংক্রান্ত তথ্য',icon:MapPinned,href:'/guides'},
  {title:'ফি ও ভূমি কর',desc:'ভূমি উন্নয়ন কর ও প্রযোজ্য ফি সম্পর্কে জানুন',icon:Calculator,href:'/guides'},
  {title:'আইন পরিবর্তনের খবর',desc:'নতুন আইন, গেজেট ও সংশোধনীর পর্যবেক্ষণ',icon:Bell,href:'/updates'},
+ {title:'গবেষণা ও অডিট আর্কাইভ',desc:'আগের ২২টি ব্যাচ, অডিট রিপোর্ট ও Master Ledger',icon:ClipboardList,href:'/research'},
 ];
 const en = [
  {title:'Laws & Rules',desc:'Acts, rules, amendments and official gazettes',icon:BookOpen,href:'/laws'},
@@ -18,6 +19,7 @@ const en = [
  {title:'Records & Surveys',desc:'Survey records, plots and mouza information',icon:MapPinned,href:'/guides'},
  {title:'Fees & Land Tax',desc:'Land development tax and applicable fees',icon:Calculator,href:'/guides'},
  {title:'Legal Updates',desc:'Monitor new laws, gazettes and amendments',icon:Bell,href:'/updates'},
+ {title:'Research & Audit Archive',desc:'Recovered batch reports, audit history and master ledger',icon:ClipboardList,href:'/research'},
 ];
 export default function Landing(){
  const [english,setEnglish]=useState(false); const [dark,setDark]=useState(false); const [query,setQuery]=useState('');
