@@ -1,0 +1,14 @@
+﻿Archive_Name,Type,Availability,ZIP_Integrity,Finding
+land-knowledge-bd-starter.zip,Starter code snapshot,FOUND,PASS,Initial web-app starter code; not a research ledger.
+land-knowledge-bd-phase2.zip,Web-app code snapshot,FOUND,PASS,21 code/config files; no original L-ID table or Audit 04–10 report.
+land-knowledge-bd-phase3.zip,Web-app code snapshot,FOUND,PASS,21 code/config files; no original L-ID table or Audit 04–10 report.
+land-knowledge-bd-phase4.zip,Web-app code snapshot,NOT_FOUND_IN_LIBRARY,,No matching Phase 4 ZIP in the current Library listing.
+land-knowledge-bd-phase5.zip,Web-app code snapshot,NOT_FOUND_IN_LIBRARY,,No matching Phase 5 ZIP in the current Library listing.
+land-knowledge-bd-phase6.zip,Web-app code snapshot,NOT_FOUND_IN_LIBRARY,,"Conversation archive references Phase 6, but the ZIP is not present in the current Library listing."
+land-knowledge-bd-phase7.zip,Web-app code snapshot,FOUND,PASS,27 code/config files; no original L-ID table.
+land-knowledge-bd-phase8.zip,Web-app code snapshot,FOUND,PASS,36 code/config files; no original L-ID table.
+land-knowledge-bd-phase9.zip,Web-app code snapshot,FOUND,PASS,39 code/config files; no original L-ID table.
+land-knowledge-bd-phase10.zip,Web-app code snapshot,FOUND,PASS,39 code/config files; no original L-ID table.
+land-knowledge-bd-phase11.zip,Web-app code snapshot,FOUND,PASS,39 code/config files; no original L-ID table.
+land-knowledge-bd-complete-handover.zip,Research/project handover,FOUND,PASS,"Contains Research Master, Project Master, Audit Status, Pending Tasks, Source Register and prompt."
+land-knowledge-bd-reconstruction-ledger.zip,Research reconstruction workbook,FOUND,PASS,Contains 446-ID structure; L001–L010 titles only; remaining rows blank; legal leads separately listed.

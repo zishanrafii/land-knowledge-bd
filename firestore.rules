@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function role() { return signedIn() ? request.auth.token.role : null; }
+    function isSuperAdmin() { return role() == 'SUPER_ADMIN'; }
+    function isEditor() { return role() == 'EDITOR' || isSuperAdmin(); }
+    function isReviewer() { return role() == 'REVIEWER' || isSuperAdmin(); }
+    function validStatus(s) { return s in ['VERIFIED','PARTIALLY_VERIFIED','PENDING','INCORRECT_REPLACED','DUPLICATE']; }
+
+    match /legalInstruments/{id} {
+      allow read: if (resource.data.published == true && resource.data.verificationStatus == 'VERIFIED') || isEditor() || isReviewer();
+      allow create: if isEditor() && request.resource.data.id is string && validStatus(request.resource.data.verificationStatus)
+        && (!request.resource.data.published || request.resource.data.verificationStatus == 'VERIFIED');
+      allow update: if isEditor() && validStatus(request.resource.data.verificationStatus)
+        && (!request.resource.data.published || request.resource.data.verificationStatus == 'VERIFIED')
+        && request.resource.data.id == resource.data.id;
+      allow delete: if isSuperAdmin();
+    }
+    match /legalSources/{id} { allow read: if isEditor() || isReviewer(); allow create, update: if isEditor(); allow delete: if isSuperAdmin(); }
+    match /legalAttachments/{id} { allow read: if isEditor() || isReviewer(); allow write: if isEditor(); }
+    match /verificationRecords/{id} { allow read: if isEditor() || isReviewer(); allow create: if isReviewer(); allow update, delete: if isSuperAdmin(); }
+    match /reviewEvents/{id} { allow read: if isEditor() || isReviewer(); allow create: if isReviewer(); allow update, delete: if isSuperAdmin(); }
+    match /users/{uid} { allow read: if signedIn() && request.auth.uid == uid || isSuperAdmin(); allow write: if false; }
+    match /{document=**} { allow read, write: if false; }
+  }
+}
